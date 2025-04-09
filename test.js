@@ -1,7 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import 'dotenv/config';
 
 function getClient() {
-	const databaseUrl = new URL("postgresql://postgres:postgres@localhost:5432/prisma-relational-join-panic");
+	const databaseUrl = new URL(process.env.DATABASE_URL);
 	console.info(`🔌 setting up prisma client to ${databaseUrl.host}`);
 	const client = new PrismaClient({
 		datasources: {
